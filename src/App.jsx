@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-
-
-function App() {
-  
-=======
 import './App.css'
 import React from 'react';
 
@@ -16,7 +10,6 @@ function App() {
         </div>
     </>
   )
->>>>>>> f186d0fc0888df8971f90a02fac5fbe0f0ac9dca
 }
 
 export default App
