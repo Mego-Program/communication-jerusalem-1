@@ -1,12 +1,14 @@
 import React from 'react';
+import MyTabs from './components/singeleOrGroup';
+
+
+
 
 function App() {
 
   return (
     <>
-      <div >
-        <h1>Chats</h1>
-        </div>
+    <MyTabs/>
     </>
   )
 }
