@@ -4,11 +4,11 @@ import { red } from '@mui/material/colors';
 
 const theme = createTheme({
   palette: {
-    primary: {
+    first: {
       yellow: '#F6C927',
       grey: '#21213E'
     },
-    secondary: {
+    second: {
       blueA: '#121231',
       blueB: '#0A0A1B'
     },
