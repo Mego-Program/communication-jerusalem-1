@@ -1,8 +1,15 @@
+
 import React from "react";
 import Grid from "@mui/material/Grid";
 import MyTabs from "./components/myTabs";
 import { Box } from "@mui/system";
 import ChatHistory from "./components/chatHistory";
+=======
+import React from 'react';
+import MyTabs from './components/singeleOrGroup';
+import Profile from './components/Profile/Profile';
+
+
 
 
 function App() {
@@ -18,6 +25,11 @@ function App() {
       </Grid>
     </Box>
   );
+    <>
+    <Profile/>
+    <MyTabs/>
+    </>
+  )
 }
 
 export default App;
