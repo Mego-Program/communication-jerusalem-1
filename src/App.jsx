@@ -2,12 +2,7 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import MyTabs from "./components/myTabs";
-import { Box } from "@mui/system";
-import ChatHistory from "./components/chatHistory";
-=======
-import React from 'react';
-import MyTabs from './components/singeleOrGroup';
-import Profile from './components/Profile/Profile';
+import { Box } from "@mui/system"
 
 
 
@@ -24,12 +19,6 @@ function App() {
         <Grid item xs={9.5}></Grid>
       </Grid>
     </Box>
-  );
-    <>
-    <Profile/>
-    <MyTabs/>
-    </>
-  )
-}
+  )}
 
 export default App;
