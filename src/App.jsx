@@ -2,23 +2,27 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import MyTabs from "./components/myTabs";
-import { Box } from "@mui/system"
+import { Box } from "@mui/s
+import ChatHistory from "./components/chatHistory";
+import Profile from './components/Profile/Profile'
+import { Paper } from "@mui/material";
+import SendMessage from "./components/SendMessage";
 
 
 
 
 function App() {
   return (
+<>
     <Box sx={{background:'#21213E',
-
+    height: '650px',
+    display: 'flex',
     }}>
-      <Grid container spacing={1}>
-        <Grid item xs={2.5}>
-          <MyTabs />
-        </Grid>
-        <Grid item xs={9.5}></Grid>
-      </Grid>
+          <MyTabs/>
+          
     </Box>
+    </>
+
   )}
 
 export default App;
