@@ -2,7 +2,7 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import MyTabs from "./components/myTabs";
-import { Box } from "@mui/s
+import { Box } from "@mui/system"
 import ChatHistory from "./components/chatHistory";
 import Profile from './components/Profile/Profile'
 import { Paper } from "@mui/material";
