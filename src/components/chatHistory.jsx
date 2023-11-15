@@ -1,9 +1,8 @@
 import React from "react";
 import { Box } from "@mui/system";
 import Message from "./message";
-import { Scrollbar } from 'react-scrollbars-custom';
 
-const dataBase = {3: [
+const dataBase = {3: [//get from server
     {
       "user": "you",
       "message": "שלום, איך אתה?",
@@ -100,7 +99,10 @@ const ChatHistory = (props) => {
   let current = props.name;
 
   if (!dataBase[current]) {
-    return <div></div>;
+    return <Box sx={{background:'#21213E',
+    height: '650px',
+    display: 'flex',
+    }}></Box>;
   }
 
   return (

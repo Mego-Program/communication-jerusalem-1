@@ -9,7 +9,7 @@ const Message = (props) => {
     <Box sx={{display:"flex", flexDirection:"column", alignItems: props.sender == 'you'
     ? "end": ''}}>
     <Card sx={{marginBottom: '8px',
-    background: props.sender == 'you'?'#F6C927': '#121231',
+    background: props.sender == 'you'? '#121231':'#F6C927',
     width: '45%',
     
     alignItems: 'flex-end'
