@@ -6,13 +6,13 @@ import { ButtonGroup } from '@mui/material';
 import { Box } from '@mui/system';
 import Grid from "@mui/material/Grid";
 import ChatHistory from './chatHistory';
-import { Scrollbar } from 'react-scrollbars-custom';
+import SendMessage from './SendMessage';
 
 
 
-const users = [{name:'Avi',id:1},{name:'dovi',id:2},{name:'moishy',id:3},{name:'david',id:4},{name:'josh',id:5},{name:'eithan',id:6},{name:'sander',id:6},{name:'boaz',id:7},{name:'Ariel',id:8},{name:'tzvi',id:9},{name:'yaniv',id:10},{name:'haim',id:11},{name:'osnat',id:12},{name:'meny',id:13},{name:'mendel',id:14},{name:'hardon',id:15},{name:'Av',id:16},{name:'dov',id:17},{name:'moish',id:18},{name:'dave',id:19}]
+const users = [{name:'Avi',id:1},{name:'dovi',id:2},{name:'moishy',id:3},{name:'david',id:4},{name:'josh',id:5},{name:'eithan',id:6},{name:'sander',id:6},{name:'boaz',id:7},{name:'Ariel',id:8},{name:'tzvi',id:9},{name:'yaniv',id:10},{name:'haim',id:11},{name:'osnat',id:12},{name:'meny',id:13},{name:'mendel',id:14},{name:'hardon',id:15},{name:'Av',id:16},{name:'dov',id:17},{name:'moish',id:18},{name:'dave',id:19}]//get from server
 
-const groups = [{name:'Administrators',id:100},{name:'My pro team',id:101},{name:'general',id:102},{name:'sorces',id:103}]
+const groups = [{name:'Administrators',id:100},{name:'My pro team',id:101},{name:'general',id:102},{name:'sorces',id:103}]//get from server
 
 function MyTabs() {
   const [value, setValue] = useState(0);
@@ -84,6 +84,7 @@ function MyTabs() {
           <Box sx={{background:'#21213E'}}>
           <ChatHistory name={selected}/>
           </Box>
+          <SendMessage/>
           </Grid>
       </Grid>
 
