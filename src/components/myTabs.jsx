@@ -7,6 +7,8 @@ import { Box } from '@mui/system';
 import Grid from "@mui/material/Grid";
 import ChatHistory from './chatHistory';
 import SendMessage from './SendMessage';
+import Drawer from './Drawer';
+import { red } from '@mui/material/colors';
 
 
 
@@ -42,7 +44,6 @@ function MyTabs() {
       <Tabs value={value} sx={{
         '.MuiTab-root': {
           backgroundColor: '#0A0A1B',
-
         },
       }}  onChange={handleChange}>
         <Tab  key={0} label="users"/>
@@ -55,7 +56,6 @@ function MyTabs() {
         sx={{
           width: '100%',
           height:'600px',
-
 
           '.MuiButton-root': {
             height: 50
@@ -72,9 +72,12 @@ function MyTabs() {
             className={objact.id==selected?'selected':''}
             onClick={()=>selectButton(objact.id)} 
             sx={{color:'white', background:'#121231',
-            border: 0
+            border: 0, 
+            display: "flex", 
+            justifyContent: "left",
           }}
           >
+            <Drawer/>
             {objact.name}
           </Button>)}
       </ButtonGroup>
