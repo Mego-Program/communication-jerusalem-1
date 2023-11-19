@@ -99,8 +99,7 @@ const ChatHistory = (props) => {
   let current = props.name;
 
   if (!dataBase[current]) {
-    return <Box sx={{background:'#21213E',
-    height: '650px',
+    return <Box sx={{
     display: 'flex',
     }}></Box>;
   }

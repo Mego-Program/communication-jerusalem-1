@@ -10,7 +10,8 @@ const SendMessage = () => {
   };
 
   const handleButtonClick = () => {
-    console.log('Input Value:', inputValue);//post to server
+    console.log('Input Value:', inputValue);
+    //post to server
   };
 
   return (

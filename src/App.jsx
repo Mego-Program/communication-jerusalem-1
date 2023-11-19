@@ -8,8 +8,7 @@ function App() {
   return (
     <>
       <Box
-        sx={{background:'#21213E',
-            height: '100vh',
+        sx={{
             display: 'flex',
         }}>
         <MyTabs/>   

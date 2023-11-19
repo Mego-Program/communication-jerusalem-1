@@ -84,7 +84,8 @@ function MyTabs() {
     </Box>
         </Grid>
         <Grid item xs={10}>
-          <Box sx={{background:'#21213E'}}>
+          <Box sx={{
+            }}>
           <ChatHistory name={selected}/>
           </Box>
           <SendMessage/>
