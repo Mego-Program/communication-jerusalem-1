@@ -38,11 +38,11 @@ export default function Drawer() {
       <List
         sx={{color:'white', background:'#121231'}}
       >
-        <Avatar sx={{margin: 5, padding:3}}><Button sx={{border: 0}}/></Avatar>
+        <Avatar sx={{margin: 5, padding:3}}><Button sx={{}}/></Avatar>
         {['User Name', 'About', 'Mail@gmail.com', '+972-5223-55658', 'Message'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
+              <ListItemIcon sx={{color: 'white'}}>
               {index === 0 ? <CheckBoxOutlineBlankIcon/> : (index === 2 ? <MailIcon /> : (index === 3 ? <PhoneIcon /> : (index === 4 ? <MessageIcon /> : <InfoIcon/>)))}
               </ListItemIcon>
               <ListItemText primary={text} />
@@ -57,7 +57,7 @@ export default function Drawer() {
         {['Media', 'Files', 'Links'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
+              <ListItemIcon sx={{color: 'white'}}>
                 {index === 0 ? <PermMediaIcon/> : (index === 1 ? <FileCopyIcon/> : <LinkIcon/>)}
               </ListItemIcon>
               <ListItemText primary={text} />
