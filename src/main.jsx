@@ -4,7 +4,6 @@ import App from './App.jsx'
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
 
-
 ReactDOM.createRoot(document.getElementById('root')).render(
     <ThemeProvider theme={theme}>
     <App />

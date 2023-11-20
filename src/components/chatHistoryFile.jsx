@@ -1,4 +1,4 @@
-import React from "react"; // Make sure to import React
+import React from "react";
 import { object } from "prop-types";
 
 const chatHistoryFile = () => {
