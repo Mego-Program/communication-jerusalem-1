@@ -15,7 +15,6 @@ const Message = (props) => {
     >
       <Box
         sx={{
-          backgroundColor: "#21213E",
           border: "none",
           marginBottom: "8px",
           width: "45%",

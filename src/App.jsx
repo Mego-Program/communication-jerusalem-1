@@ -1,19 +1,18 @@
-
 import React from "react";
-import MyTabs from "./components/myTabs";
-import { Box } from "@mui/system"
+import ChatView from "./components/ChatView";
+import { Box } from "@mui/system";
+
+
+export const routeMessage = (
+  <>
+    <Box>
+      <ChatView />
+    </Box>
+  </>
+);
 
 function App() {
-
-  return (
-    <>
-      <Box
-        sx={{
-            display: 'flex',
-        }}>
-        <MyTabs/>   
-      </Box>
-    </>
-  )}
+  return routeMessage;
+}
 
 export default App;
