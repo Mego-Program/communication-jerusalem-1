@@ -4,7 +4,8 @@ import UsersList from "./UsersList";
 import { Box } from "@mui/system";
 import Grid from "@mui/material/Grid";
 import ChatHistory from "./ChatHistory";
-import SendMessage from "./SendMessage";
+import Input from "./Input";
+import SentMessages from "./SentMessages";
 
 const users = [
   { name: "Avi", id: 1 },
@@ -36,15 +37,24 @@ const groups = [
   { name: "sorces", id: 103 },
 ]; //get from server
 
+
+
 const ChatView = () => {
   const [selected, setSelected] = useState("");
   const [items, setItems] = useState(users);
+  
+  const [sent, setSent] = useState([]); 
 
   function handleSetSelected(key) {
     setSelected(key);
   }
+
   function handleSetItems(itms) {
     setItems(itms);
+  }
+
+  function handleSetSent(newMsg) {
+    setSent((prevArray) => [...prevArray, newMsg]);
   }
 
   return (
@@ -70,8 +80,9 @@ const ChatView = () => {
         <Grid item xs={10}>
           <Box>
             <ChatHistory name={selected} />
+            <SentMessages sent={sent} />
           </Box>
-          <SendMessage />
+          <Input setSent={handleSetSent} />
         </Grid>
       </Grid>
     </Box>

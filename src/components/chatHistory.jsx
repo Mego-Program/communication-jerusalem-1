@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/system";
-import Message from "./message";
+import Message from "./Message";
 
 const dataBase = {
   3: [

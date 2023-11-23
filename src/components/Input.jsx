@@ -1,9 +1,8 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { TextareaAutosize, Button, Box } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 
-const SendMessage = () => {
+const Input = ({ setSent }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (event) => {
@@ -12,8 +11,14 @@ const SendMessage = () => {
 
   const handleButtonClick = () => {
     if (inputValue.trim() !== "") {
-      //post to server
-      console.log("Input Value:", inputValue);
+      setSent({
+        user: "you",
+        message: inputValue,
+        timestamp:
+          new Date().toLocaleTimeString() +
+          " " +
+          new Date().toLocaleDateString(),
+      });
       setInputValue("");
     }
   };
@@ -40,6 +45,7 @@ const SendMessage = () => {
         value={inputValue}
         maxRows={1}
         onChange={handleInputChange}
+        
         style={{
           width: "100%",
           minHeight: "20px",
@@ -62,4 +68,4 @@ const SendMessage = () => {
   );
 };
 
-export default SendMessage;
+export default Input;
