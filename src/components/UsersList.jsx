@@ -34,12 +34,12 @@ export default function UsersList(props){
       >
         {items.map((objact) => (
           <Button
-            key={objact.id}
+            key={objact.userId}
           
-            onClick={() => selectButton(objact.id)}
+            onClick={() => selectButton(objact.userId)}
             sx={{
               color: "white",
-              background: objact.id == selected ? "#21213E": "#121231",
+              background: objact.userId == selected ? "#21213E": "#121231",
               border: 0,
               display: "flex",
               justifyContent: "left",

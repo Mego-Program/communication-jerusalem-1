@@ -1,33 +1,52 @@
 import React, { useState } from "react";
 import { TextareaAutosize, Button, Box } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+// import me from "./me";
 
-const Input = ({ setSent }) => {
+const me = {userId:25,name:'Elazar'}
+
+
+const Input = ({selected,socket,setAllMsg}) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
 
+  // const handleKeyPress = (event) => {
+  //   if (event.key === "Enter") {
+  //     handleButtonClick();
+  //   }
+  // };
+
   const handleButtonClick = () => {
     if (inputValue.trim() !== "") {
-      setSent({
-        user: "you",
+      setAllMsg({
+        from: me.userId,
+        to: selected,
         message: inputValue,
         timestamp:
           new Date().toLocaleTimeString() +
           " " +
           new Date().toLocaleDateString(),
       });
-      setInputValue("");
-    }
-  };
+      if (socket && inputValue.trim() !== ""){
+      socket.emit('Message', {
+        from: me.userId,
+        to: selected,
+        message: inputValue,
+        timestamp:
+          new Date().toLocaleTimeString() +
+          " " +
+          new Date().toLocaleDateString(),
+      })}
+      setInputValue("")
+      };
+      }
+    
+  
 
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      handleButtonClick();
-    }
-  };
+  
 
   return (
     <Box
@@ -66,6 +85,6 @@ const Input = ({ setSent }) => {
       </Button>
     </Box>
   );
-};
 
+      }
 export default Input;

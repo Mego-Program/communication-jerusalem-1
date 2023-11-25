@@ -2,20 +2,21 @@ import React from "react";
 import { Box } from "@mui/material";
 import Message from "./Message"; // Import Message component
 
-const SentMessages = (props) => {
-    if(props.sent.length !== 0){
+const LiveChat = ({messages, selected}) => {
+    if(messages.length !== 0){
   return (
     <Box>
-      {props.sent.map((object, index) => (
+      {messages.filter((object) => object.from === selected || object.to === selected)
+      .map((object, index) => (
         <Message
-          sender={object.user}
+          sender={object.from}
           message={object.message}
           time={object.timestamp}
-          key={index + 100}
+          key={index}
         />
       ))}
     </Box>
   )}
 }
 
-export default SentMessages;
+export default LiveChat;
