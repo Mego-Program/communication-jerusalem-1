@@ -1,4 +1,3 @@
-
 import React from "react";
 import { ButtonGroup } from "@mui/material";
 import { Button } from "@mui/material";
@@ -18,10 +17,17 @@ export default function UsersList(props){
   return (
     <Box
       sx={{
-        display: 'flex',
         width: "15%",
         position: "fixed",
-        
+        overflow: "auto",
+        height: "100vh",
+        "&::-webkit-scrollbar": {
+          width: "1px",
+          backgroundColor: "#21213E",
+        },
+        "&::-webkit-scrollbar-thumb": {
+          backgroundColor: "#0A0A1B",
+        },
       }}
     >
       <ButtonGroup

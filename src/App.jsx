@@ -3,16 +3,15 @@ import ChatView from "./components/ChatView";
 import { Box } from "@mui/system";
 
 
-export const routeMessage = (
-  <>
-    <Box>
-      <ChatView />
-    </Box>
-  </>
-);
-
 function App() {
-  return routeMessage;
+  
+  return (
+    <>
+      <Box>
+        <ChatView/>
+      </Box>
+    </>
+  )
 }
 
 export default App;
