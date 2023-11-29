@@ -20,7 +20,26 @@ const Input = ({ selected, socket, setAllMsg }) => {
   };
 
   const handleButtonClick = () => {
+
+    function getCurrentTime() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      
+      return `${hours}:${minutes}`;
+    }
+
+    const message = {
+      from: me.userId,
+      to: selected,
+      text: inputValue,
+      timestamp:
+        getCurrentTime() +
+        "  " +
+        new Date().toLocaleDateString(),
+    }
     if (inputValue.trim() !== "") {
+
       setAllMsg({
         from: me.userId,
         to: selected,
@@ -43,7 +62,21 @@ const Input = ({ selected, socket, setAllMsg }) => {
       }
       setInputValue("");
     }
-  };
+  }
+      setAllMsg(message);
+    }
+
+      if (socket && inputValue.trim() !== ""){
+      socket.emit('privetMessage', message)
+      }
+      setInputValue("")
+      };
+      
+    
+  
+
+  
+
 
   if (!selected) {
     return (

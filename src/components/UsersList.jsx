@@ -5,6 +5,7 @@ import { Box } from "@mui/system";
 import Drawer from "./Drawer";
 
 
+
 export default function UsersList(props){
   const selected = props.selected;
   const items = props.items;
@@ -38,7 +39,7 @@ export default function UsersList(props){
           flexDirection: 'column',  
         }}
       >
-        {items.map((objact) => (
+        {items.filter((objact) => objact.userId !== props.me.userId).map((objact) => (
           <Button
             key={objact.userId}
           

@@ -9,16 +9,26 @@ import LiveChat from "./LiveChat";
 import NewMsg from "./NewMsg";
 import users from "./users";
 import groups from "./groups";
+
 import { useEffect, useRef } from "react";
 
+
+
+
+const me = {userId:25,name:'Elazar'}
+
+
+
 const ChatView = () => {
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState(null);
 
   const [items, setItems] = useState(users);
 
   const [allMsg, setAllMsg] = useState([]);
 
-  // const [send,setSend] = useState(null)
+  console.log(allMsg)
+
+
 
   const [socket, setSocket] = useState(null);
 
@@ -33,9 +43,9 @@ const ChatView = () => {
   function handleSetAllMsg(newMsg) {
     setAllMsg((prevArray) => [...prevArray, newMsg]);
   }
-  // function handleSetSend(newMsg) {
-  // setSend(newMsg);
-  // }
+ 
+
+  
   function handleSetSocket(skt) {
     setSocket(skt);
   }
@@ -79,12 +89,14 @@ const ChatView = () => {
               selected={selected}
               setSelected={handleSetSelected}
               items={items}
+              me={me}
             />
           </Box>
         </Grid>
         <Grid item xs={10}>
           <Box>
             <ChatHistory selected={selected} />
+
             <LiveChat messages={allMsg} selected={selected} />
           </Box>
           <Box ref={messagesEndRef}>
@@ -93,6 +105,9 @@ const ChatView = () => {
               socket={socket}
               setAllMsg={handleSetAllMsg}
             />
+
+            <LiveChat messages={allMsg} selected={selected}/>
+            <NewMsg setAllMsg={handleSetAllMsg} setSocket={handleSetSocket}/>
           </Box>
         </Grid>
       </Grid>
