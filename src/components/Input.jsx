@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TextareaAutosize, Button, Box } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 // import me from "./me";
-import Logo from "/Logo.png"
+import Logo from "/Logo.png";
 
 const me = { userId: 25, name: "Elazar" };
 
@@ -13,19 +13,18 @@ const Input = ({ selected, socket, setAllMsg }) => {
     setInputValue(event.target.value);
   };
 
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      handleButtonClick();
-    }
-  };
+  // const handleKeyPress = (event) => {
+  //   if (event.key === "Enter") {
+  //     handleButtonClick();
+  //   }
+  // };
 
   const handleButtonClick = () => {
-
     function getCurrentTime() {
       const now = new Date();
-      const hours = now.getHours().toString().padStart(2, '0');
-      const minutes = now.getMinutes().toString().padStart(2, '0');
-      
+      const hours = now.getHours().toString().padStart(2, "0");
+      const minutes = now.getMinutes().toString().padStart(2, "0");
+
       return `${hours}:${minutes}`;
     }
 
@@ -33,51 +32,17 @@ const Input = ({ selected, socket, setAllMsg }) => {
       from: me.userId,
       to: selected,
       text: inputValue,
-      timestamp:
-        getCurrentTime() +
-        "  " +
-        new Date().toLocaleDateString(),
+      timestamp: getCurrentTime() + "  " + new Date().toLocaleDateString(),
     }
     if (inputValue.trim() !== "") {
-
-      setAllMsg({
-        from: me.userId,
-        to: selected,
-        message: inputValue,
-        timestamp:
-          new Date().toLocaleTimeString() +
-          " " +
-          new Date().toLocaleDateString(),
-      });
-      if (socket && inputValue.trim() !== "") {
-        socket.emit("Message", {
-          from: me.userId,
-          to: selected,
-          message: inputValue,
-          timestamp:
-            new Date().toLocaleTimeString() +
-            " " +
-            new Date().toLocaleDateString(),
-        });
-      }
-      setInputValue("");
-    }
-  }
       setAllMsg(message);
     }
 
-      if (socket && inputValue.trim() !== ""){
-      socket.emit('privetMessage', message)
-      }
-      setInputValue("")
-      };
-      
-    
-  
-
-  
-
-
+    if (socket && inputValue.trim() !== "") {
+      socket.emit("privetMessage", message);
+    }
+    setInputValue("");
+  };
   if (!selected) {
     return (
       <Box
@@ -91,7 +56,7 @@ const Input = ({ selected, socket, setAllMsg }) => {
       >
         <img src={Logo} alt="Logo.png" />
       </Box>
-    );
+    )
   } else {
     return (
       <Box
@@ -128,7 +93,8 @@ const Input = ({ selected, socket, setAllMsg }) => {
           <SendIcon />
         </Button>
       </Box>
-    );
+    )
   }
-};
+}
+
 export default Input;

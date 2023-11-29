@@ -105,8 +105,6 @@ const ChatView = () => {
               socket={socket}
               setAllMsg={handleSetAllMsg}
             />
-
-            <LiveChat messages={allMsg} selected={selected}/>
             <NewMsg setAllMsg={handleSetAllMsg} setSocket={handleSetSocket}/>
           </Box>
         </Grid>
