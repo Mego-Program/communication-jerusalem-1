@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { TextareaAutosize, Button, Box } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-// import me from "./me";
 import Logo from "/Logo.png";
 
 const me = { userId: 25, name: "Elazar" };
 
 const Input = ({ selected, socket, setAllMsg }) => {
   const [inputValue, setInputValue] = useState("");
+  const textareaRef = useRef(null);
 
   const handleInputChange = (event) => {
+    console.log(event)
     setInputValue(event.target.value);
   };
-
-  // const handleKeyPress = (event) => {
-  //   if (event.key === "Enter") {
-  //     handleButtonClick();
-  //   }
-  // };
+  function enter(event){
+    if (event.key === "Enter"){
+      handleButtonClick()
+    }
+  }
 
   const handleButtonClick = () => {
     function getCurrentTime() {
@@ -33,7 +33,8 @@ const Input = ({ selected, socket, setAllMsg }) => {
       to: selected,
       text: inputValue,
       timestamp: getCurrentTime() + "  " + new Date().toLocaleDateString(),
-    }
+    };
+
     if (inputValue.trim() !== "") {
       setAllMsg(message);
     }
@@ -41,8 +42,15 @@ const Input = ({ selected, socket, setAllMsg }) => {
     if (socket && inputValue.trim() !== "") {
       socket.emit("privetMessage", message);
     }
+
     setInputValue("");
+
+
+    if (textareaRef.current) {
+      textareaRef.current.focus();
+    }
   };
+
   if (!selected) {
     return (
       <Box
@@ -56,7 +64,7 @@ const Input = ({ selected, socket, setAllMsg }) => {
       >
         <img src={Logo} alt="Logo.png" />
       </Box>
-    )
+    );
   } else {
     return (
       <Box
@@ -69,11 +77,13 @@ const Input = ({ selected, socket, setAllMsg }) => {
         }}
       >
         <TextareaAutosize
+          ref={textareaRef}
           aria-label="empty textarea"
           placeholder="Type a message"
           value={inputValue}
           maxRows={1}
           onChange={handleInputChange}
+          onKeyDown={enter}
           style={{
             width: "100%",
             minHeight: "20px",
@@ -93,8 +103,8 @@ const Input = ({ selected, socket, setAllMsg }) => {
           <SendIcon />
         </Button>
       </Box>
-    )
+    );
   }
-}
+};
 
 export default Input;
