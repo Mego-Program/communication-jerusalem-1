@@ -10,11 +10,11 @@ const Input = ({ selected, socket, setAllMsg }) => {
   const textareaRef = useRef(null);
 
   const handleInputChange = (event) => {
-    console.log(event)
     setInputValue(event.target.value);
   };
   function enter(event){
     if (event.key === "Enter"){
+      event.preventDefault()
       handleButtonClick()
     }
   }
