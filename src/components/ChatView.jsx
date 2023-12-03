@@ -12,12 +12,7 @@ import groups from "./groups";
 
 import { useEffect, useRef } from "react";
 
-
-
-
-const me = {userId:25,name:'Elazar'}
-
-
+const me = { userId: 25, name: "Elazar" };
 
 const ChatView = () => {
   const [selected, setSelected] = useState(null);
@@ -26,9 +21,7 @@ const ChatView = () => {
 
   const [allMsg, setAllMsg] = useState([]);
 
-  console.log(allMsg)
-
-
+  console.log(allMsg);
 
   const [socket, setSocket] = useState(null);
 
@@ -43,9 +36,7 @@ const ChatView = () => {
   function handleSetAllMsg(newMsg) {
     setAllMsg((prevArray) => [...prevArray, newMsg]);
   }
- 
 
-  
   function handleSetSocket(skt) {
     setSocket(skt);
   }
@@ -78,7 +69,7 @@ const ChatView = () => {
     >
       <Grid container spacing={1}>
         <Grid item xs={2}>
-          <Box sx={{ position: "fixed" }}>
+          <Box sx={{ position: "fixed", width: "15%" }}>
             <MyTabs
               setSelected={handleSetSelected}
               setItems={handleSetItems}
@@ -105,7 +96,7 @@ const ChatView = () => {
               socket={socket}
               setAllMsg={handleSetAllMsg}
             />
-            <NewMsg setAllMsg={handleSetAllMsg} setSocket={handleSetSocket}/>
+            <NewMsg setAllMsg={handleSetAllMsg} setSocket={handleSetSocket} />
           </Box>
         </Grid>
       </Grid>
