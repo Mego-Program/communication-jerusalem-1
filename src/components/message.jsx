@@ -19,7 +19,7 @@ const Message = (props) => {
       <Box
         sx={{
           border: "none",
-          marginBottom: "8px",
+          marginBottom: "15px",
           width: "45%",
           alignItems: "flex-end",
         }}

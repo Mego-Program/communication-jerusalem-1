@@ -4,12 +4,9 @@ import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 import Drawer from "./Drawer";
 
-
-
-export default function UsersList(props){
+export default function UsersList(props) {
   const selected = props.selected;
   const items = props.items;
-
 
   const selectButton = (key) => {
     props.setSelected(key);
@@ -36,30 +33,30 @@ export default function UsersList(props){
         aria-label="vertical outlined button group"
         sx={{
           width: "100%",
-          flexDirection: 'column',  
+          flexDirection: "column",
         }}
       >
-        {items.filter((objact) => objact.userId !== props.me.userId).map((objact) => (
-          <Button
-            key={objact.userId}
-          
-            onClick={() => selectButton(objact.userId)}
-            sx={{
-              color: "white",
-              background: objact.userId == selected ? "#21213E": "#121231",
-              border: 0,
-              display: "flex",
-              justifyContent: "left",
-              height: 50,
-            }}
-          >
-            <Drawer />
-            {objact.name}
-            
-          </Button>
-        ))}
+        {items
+          .filter((objact) => objact.userId !== props.me.userId)
+          .map((objact) => (
+            <Button
+              key={objact.userId}
+              onClick={() => selectButton(objact.userId)}
+              sx={{
+                color: "white",
+                background: objact.userId == selected ? "#21213E" : "#121231",
+                border: 0,
+                display: "flex",
+                justifyContent: "left",
+                height: 50,
+              }}
+            >
+              <Drawer />
+
+              {objact.name}
+            </Button>
+          ))}
       </ButtonGroup>
     </Box>
   );
-};
-
+}

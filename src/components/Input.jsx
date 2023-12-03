@@ -12,10 +12,10 @@ const Input = ({ selected, socket, setAllMsg }) => {
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
-  function enter(event){
-    if (event.key === "Enter"){
-      event.preventDefault()
-      handleButtonClick()
+  function enter(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleButtonClick();
     }
   }
 
@@ -44,7 +44,6 @@ const Input = ({ selected, socket, setAllMsg }) => {
     }
 
     setInputValue("");
-
 
     if (textareaRef.current) {
       textareaRef.current.focus();
