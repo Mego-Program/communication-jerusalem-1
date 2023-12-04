@@ -9,7 +9,7 @@ import LiveChat from "./LiveChat";
 import NewMsg from "./NewMsg";
 import users from "./users";
 import groups from "./groups";
-
+import 'typeface-poppins'; // not working for now
 import { useEffect, useRef } from "react";
 
 const me = { userId: 25, name: "Elazar" };
@@ -54,6 +54,7 @@ const ChatView = () => {
   return (
     <Box
       sx={{
+        fontFamily: "Poppins", // not working for now
         background: "#21213E",
         minHeight: "100vh",
         overflow: "auto",
@@ -69,7 +70,7 @@ const ChatView = () => {
     >
       <Grid container spacing={1}>
         <Grid item xs={2}>
-          <Box sx={{ position: "fixed", width: "15%" }}>
+          <Box sx={{ position: "fixed", width: "15%", backgroundColor: "#121231", height: "100vh"}}>
             <MyTabs
               setSelected={handleSetSelected}
               setItems={handleSetItems}

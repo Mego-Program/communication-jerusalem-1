@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import {
+  Button,
   ButtonGroup,
-  InputAdornment,
-  IconButton,
   Input,
   TextField,
+  IconButton,
+  InputAdornment,
+  Badge,
 } from "@mui/material";
-import { Button } from "@mui/material";
 import { Box } from "@mui/system";
-import Drawer from "./Drawer";
+import MarkUnreadChatAltIcon from "@mui/icons-material/MarkUnreadChatAlt";
 import SearchIcon from "@mui/icons-material/Search";
+import Drawer from "./Drawer";
 
 export default function UsersList(props) {
   const [filterText, setFilterText] = useState("");
@@ -26,6 +28,8 @@ export default function UsersList(props) {
       objact.userId !== props.me.userId &&
       objact.name.toLowerCase().includes(filterText.toLowerCase())
   );
+
+  let UnreadMessages = 1;
 
   return (
     <Box
@@ -76,16 +80,22 @@ export default function UsersList(props) {
             onClick={() => selectButton(objact.userId)}
             sx={{
               color: "white",
-              background: objact.userId === selected ? "#21213E" : "#121231",
-              // borderColor: objact.userId === selected ? "#121231" : "#21213E",
+              background: objact.userId === selected ? "#121231" : "#21213E",
               border: 0,
-              display: "flex",
-              justifyContent: "left",
               height: 50,
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              margin: "10px",
             }}
           >
-            <Drawer />
-            {objact.name}
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Drawer />
+              {objact.name}
+            </Box>
+            <Badge badgeContent={UnreadMessages} color="primary">
+              <MarkUnreadChatAltIcon color="white" />
+            </Badge>
           </Button>
         ))}
       </ButtonGroup>
