@@ -70,8 +70,10 @@ const Input = ({ selected, socket, setAllMsg }) => {
         sx={{
           display: "flex",
           flexDirection: "row",
+          alignItems: "center",
           position: "fixed",
           bottom: "0",
+          right: "0",
           width: "80%",
         }}
       >
