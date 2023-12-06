@@ -67,14 +67,14 @@ const ChatView = () => {
         },
       }}
     >
-      <Grid container spacing={1}>
-        <Grid item xs={12} sm={4} md={3} lg={2}>
+      <Grid container spacing={0.5}>
+        <Grid item xs={5} sm={4} md={3} lg={2}>
           <Box
             sx={{
               position: "fixed",
               minWidth: "15%",
               backgroundColor: "#121231",
-              height: "100vh",
+              minHeight: "100vh",
             }}
           >
             <MyTabs
@@ -91,7 +91,7 @@ const ChatView = () => {
             />
           </Box>
         </Grid>
-        <Grid item xs={12} sm={8} md={9} lg={10}>
+        <Grid item xs={7} sm={8} md={9} lg={10}>
           <Box>
             <ChatHistory selected={selected} />
 

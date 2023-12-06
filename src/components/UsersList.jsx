@@ -75,7 +75,7 @@ export default function UsersList(props) {
           onChange={(e) => setFilterText(e.target.value)}
           placeholder="Search or start a new chat"
           sx={{
-            fontSize: 14,
+            fontSize: 10,
             width: "80%",
             margin: "10px auto",
             display: "block",
