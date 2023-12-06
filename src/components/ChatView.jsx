@@ -9,7 +9,7 @@ import LiveChat from "./LiveChat";
 import NewMsg from "./NewMsg";
 import users from "./users";
 import groups from "./groups";
-import 'typeface-poppins'; // not working for now
+import "typeface-poppins"; // not working for now
 import { useEffect, useRef } from "react";
 
 const me = { userId: 25, name: "Elazar" };
@@ -58,7 +58,6 @@ const ChatView = () => {
         background: "#21213E",
         minHeight: "100vh",
         overflow: "auto",
-        height: "100vh",
         "&::-webkit-scrollbar": {
           width: "10px",
           backgroundColor: "#21213E",
@@ -69,8 +68,15 @@ const ChatView = () => {
       }}
     >
       <Grid container spacing={1}>
-        <Grid item xs={2}>
-          <Box sx={{ position: "fixed", width: "15%", backgroundColor: "#121231", height: "100vh"}}>
+        <Grid item xs={12} sm={4} md={3} lg={2}>
+          <Box
+            sx={{
+              position: "fixed",
+              minWidth: "15%",
+              backgroundColor: "#121231",
+              height: "100vh",
+            }}
+          >
             <MyTabs
               setSelected={handleSetSelected}
               setItems={handleSetItems}
@@ -85,7 +91,7 @@ const ChatView = () => {
             />
           </Box>
         </Grid>
-        <Grid item xs={10}>
+        <Grid item xs={12} sm={8} md={9} lg={10}>
           <Box>
             <ChatHistory selected={selected} />
 
