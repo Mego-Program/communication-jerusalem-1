@@ -31,7 +31,7 @@ const Message = (props) => {
             gutterBottom
             sx={{
               color: props.sender == me.userId ? "white" : "black",
-              backgroundColor: props.sender == me.userId ? "#121231" : "#F6C927",
+              backgroundColor: props.sender == me.userId ? "#0A0A1B" : "#F6C927",
               borderTopRightRadius: "20px",
               borderTopLeftRadius: "20px",
               padding: "10px",
