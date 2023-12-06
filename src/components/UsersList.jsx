@@ -1,26 +1,21 @@
 import React, { useState } from "react";
-import {
-  Button,
-  ButtonGroup,
-  Input,
-  TextField,
-  IconButton,
-  InputAdornment,
-  Badge,
-} from "@mui/material";
+import { Button, ButtonGroup, Input, Badge } from "@mui/material";
 import { Box } from "@mui/system";
-import MarkUnreadChatAltIcon from "@mui/icons-material/MarkUnreadChatAlt";
 import SearchIcon from "@mui/icons-material/Search";
 import Drawer from "./Drawer";
+import { object } from "prop-types";
+import { Key } from "@mui/icons-material";
 
 export default function UsersList(props) {
   const [filterText, setFilterText] = useState("");
+  const [unreadMessages, setUnreadMessages] = useState({});
 
   const selected = props.selected;
   const items = props.items;
 
   const selectButton = (key) => {
     props.setSelected(key);
+    setUnreadMessages({ ...unreadMessages, [key]: 0 });
   };
 
   const filteredItems = items.filter(
@@ -29,12 +24,38 @@ export default function UsersList(props) {
       objact.name.toLowerCase().includes(filterText.toLowerCase())
   );
 
-  let UnreadMessages = 1;
+  function handleNewMessage(userId) {
+    if (userId !== selected && unreadMessages[userId] === undefined) {
+      setUnreadMessages((prevUnreadMessages) => ({
+        ...prevUnreadMessages,
+        [userId]: 1,
+      }));
+    } else if (userId !== selected && unreadMessages[userId] !== undefined) {
+      // Check if the user is not selected and there's an unread count
+      // You might add here your logic to detect new messages
+      // For now, I'll simulate a random condition that marks a message as new
+      const isNewMessage = Math.random() > 0.5; // Simulating a condition for a new message
+
+      if (isNewMessage) {
+        setUnreadMessages((prevUnreadMessages) => ({
+          ...prevUnreadMessages,
+          [userId]: prevUnreadMessages[userId] + 1,
+        }));
+      }
+    }
+  }
+
+  function UnreadMessages(userId) {
+    const unreadCount = unreadMessages[userId] || 0;
+    return unreadCount > 0 ? (
+      <Badge badgeContent={unreadCount} color="primary" />
+    ) : null;
+  }
 
   return (
     <Box
       sx={{
-        width: "15%",
+        minWidth: "15%",
         position: "fixed",
         overflow: "auto",
         height: "100vh",
@@ -70,18 +91,26 @@ export default function UsersList(props) {
         orientation="vertical"
         aria-label="vertical outlined button group"
         sx={{
-          width: "100%",
+          minWidth: "100%",
           flexDirection: "column",
+          ".MuiButtonGroup-grouped": {
+            borderRadius: 2,
+            "&:hover": { borderRadius: 0 },
+          },
         }}
       >
         {filteredItems.map((objact) => (
           <Button
             key={objact.userId}
-            onClick={() => selectButton(objact.userId)}
+            onClick={() => {
+              selectButton(objact.userId);
+              handleNewMessage(objact.userId);
+            }}
             sx={{
+              minWidth: "15%",
               color: "white",
               background: objact.userId === selected ? "#121231" : "#21213E",
-              border: 0,
+              border: "none",
               height: 50,
               display: "flex",
               justifyContent: "space-between",
@@ -93,9 +122,7 @@ export default function UsersList(props) {
               <Drawer />
               {objact.name}
             </Box>
-            <Badge badgeContent={UnreadMessages} color="primary">
-              <MarkUnreadChatAltIcon color="white" />
-            </Badge>
+            {UnreadMessages(objact.userId)}
           </Button>
         ))}
       </ButtonGroup>
