@@ -116,6 +116,7 @@ export default function UsersList(props) {
               justifyContent: "space-between",
               alignItems: "center",
               margin: "10px",
+              boxShadow: objact.userId === selected ? "inset 0 0 1px 1px #21213E" : "none",
             }}
           >
             <Box sx={{ display: "flex", alignItems: "center" }}>
