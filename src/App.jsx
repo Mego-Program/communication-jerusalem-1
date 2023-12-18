@@ -2,17 +2,16 @@ import React from "react";
 import ChatView from "./components/ChatView";
 import { Box } from "@mui/system";
 
-
-export const routeMessage = (
-  <>
-    <Box>
-      <ChatView />
-    </Box>
-  </>
-);
-
+const remoteMessage =  <>
+<Box>
+  <ChatView/>
+</Box>
+</>
 function App() {
-  return routeMessage;
+  
+  return (
+    remoteMessage
+  )
 }
 
 export default App;

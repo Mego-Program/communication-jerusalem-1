@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-
+import { Tabs, Tab } from "@mui/material";
+import { Box, width } from "@mui/system";
 
 function MyTabs(props) {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    
+
     if (newValue === 0) {
       props.setItems(props.users);
     } else {
@@ -19,12 +18,8 @@ function MyTabs(props) {
 
   return (
     <Tabs
+      sx={{ backgroundColor: "#0A0A1B" }}
       value={value}
-      sx={{
-        ".MuiTab-root": {
-          backgroundColor: "#0A0A1B",
-        },
-      }}
       onChange={handleChange}
     >
       <Tab sx={{ width: "50%" }} key={0} label="users" />
