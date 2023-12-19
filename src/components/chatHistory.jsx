@@ -1,107 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box } from "@mui/system";
 import Message from "./Message";
 
-const dataBase = {
-  3: [
+const me = { userId: 25, name: 'Elazar' };
 
-    {
-      from: 25,
-      text: "שלום, איך אתה?",
-      timestamp: "2023-11-06 10:00:00",
-    },
-    {
-      from: 3,
-      text: "שלום! אני טוב, תודה. מה קורה איתך?",
-      timestamp: "2023-11-06 10:05:00",
-    },
-    {
-      from: 25,
-      text: "לא רע, תודה ששאלת. יש לי שאלה על דרך אורח הלבוש לאירוע הקרוב.",
-      timestamp: "2023-11-06 10:10:00",
-    },
-    {
-      from: 25,
-      text: "שלום, איך אתה?",
-      timestamp: "2023-11-06 10:00:00",
-    },
-    {
-      from: 3,
-      text: "שלום! אני טוב, תודה. מה קורה איתך?",
-      timestamp: "2023-11-06 10:05:00",
-    },
-    {
-      from: 25,
-      text: "לא רע, תודה ששאלת. יש לי שאלה על דרך אורח הלבוש לאירוע הקרוב.",
-      timestamp: "2023-11-06 10:10:00",
-    },
-    {
-      from: 25,
-      text: "שלום, איך אתה?",
-      timestamp: "2023-11-06 10:00:00",
-    },
-    {
-      from: 3,
-      text: "שלום! אני טוב, תודה. מה קורה איתך?",
-      timestamp: "2023-11-06 10:05:00",
-    },
-    {
-      from: 25,
-      text: "לא רע, תודה ששאלת. יש לי שאלה על דרך אורח הלבוש לאירוע הקרוב.",
-      timestamp: "2023-11-06 10:10:00",
-    },
-  ],
-  2: [
-    {
-      from: 25,
-      text: "שלום, איך אתה?",
-      timestamp: "2023-11-06 10:00:00",
-    },
-    {
-      from: 2,
-      text: "שלום! אני טוב, תודה. מה קורה איתך?",
-      timestamp: "2023-11-06 10:05:00",
-    },
-    {
-      from: 25,
-      text: "לא רע, תודה ששאלת. יש לי שאלה על דרך אורח הלבוש לאירוע הקרוב.",
-      timestamp: "2023-11-06 10:10:00",
-    },
-  ],
-  1: [
-    {
-      from: 25,
-      text: "שלום, איך אתה?",
-      timestamp: "2023-11-06 10:00:00",
-    },
-    {
-      from: 1,
-      text: "שלום! אני טוב, תודה. מה קורה איתך?",
-      timestamp: "2023-11-06 10:05:00",
-    },
-    {
-      from: 25,
-      text: "לא רע, תודה ששאלת. יש לי שאלה על דרך אורח הלבוש לאירוע הקרוב.",
-      timestamp: "2023-11-06 10:10:00",
-    },
-    {
-      from: 1,
-      text: "כמובן, אני כאן לעזור. מה השאלה שלך?",
-      timestamp: "2023-11-06 10:15:00",
-    },
-    {
-      from: 25,
-      text:
-        "איזה הלבוש נחשב להתאים לאירוע פורמאלי? אני עכשיו כותב הרבה מאד מלל כדי שאוכל לראות שבאיזשהו שלב ההודעה יורדת שורה.",
-      timestamp: "2023-11-06 10:20:00",
-    },
-  ],
-};
+const ChatHistory = ({ selected }) => {
+  const [dataBase, setDataBase] = useState(null);
 
-const ChatHistory = ({selected}) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/findMessages?me=${me.userId}&selected=${selected}`);
+        const data = await response.json();
+        setDataBase(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
- 
-  if (!dataBase[selected]) {
+    fetchData();
+  }, [selected]); // אנו מוסיפים את selected לרשימת התלות, כדי לשלוח את הבקשה מחדש כאשר selected משתנה.
+
+  if (!dataBase) {
     return (
       <Box
         sx={{
@@ -113,7 +33,7 @@ const ChatHistory = ({selected}) => {
 
   return (
     <Box>
-      {dataBase[selected].map((object, index) => (
+      {dataBase.map((object, index) => (
         <Message
           sender={object.from}
           message={object.text}
