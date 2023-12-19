@@ -2,16 +2,26 @@ import React from "react";
 import ChatView from "./components/ChatView";
 import { Box } from "@mui/system";
 
-const remoteMessage =  <>
-<Box>
-  <ChatView/>
-</Box>
-</>
+import AllUsers from "remotAllUsers/AllUsers";
+
+const remoteMessage = (
+  <>
+    <Box>
+      <ChatView />
+    </Box>
+  </>
+);
 function App() {
-  
-  return (
-    remoteMessage
-  )
+  const fetchUsers = async () => {
+    try {
+      const users = await AllUsers();
+      console.log(users);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  fetchUsers();
+  return remoteMessage;
 }
 
 export default App;
