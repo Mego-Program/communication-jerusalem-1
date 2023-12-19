@@ -48,7 +48,7 @@ export default function Drawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List sx={{ color: "white", background: "#121231" }}>
-        <Avatar sx={{ margin: 5 }}></Avatar>
+        <Avatar sx={{ margin: 5, width: 120, height: 120 }}></Avatar>
         {[
           "User Name",
           "About",
@@ -102,7 +102,11 @@ export default function Drawer() {
     <div>
       {["right"].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Fab size="small" sx={{marginRight: "10px"}} onClick={toggleDrawer(anchor, true)}>
+          <Fab
+            size="small"
+            sx={{ marginRight: "10px" }}
+            onClick={toggleDrawer(anchor, true)}
+          >
             {<Avatar />}
           </Fab>
           <SwipeableDrawer

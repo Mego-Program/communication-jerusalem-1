@@ -8,10 +8,10 @@ export default defineConfig({
   plugins: [
     react(),
     federation({
-      name: "messageProject",
+      name: "AppCommunication",
       filename: "remoteEntry.js",
       exposes: {
-        "./messageProject": "./src/App",
+        "./AppCommunication": "./src/AppCommunication",
       },
       shared: ["react", "react-dom"],
     }),
