@@ -21,9 +21,8 @@ export default function UsersList(props) {
 
   const filteredItems = items.filter(
     (objact) =>
-      objact._id !== props.me.userId &&
-      objact.name.toLowerCase().includes(filterText.toLowerCase())
-  );
+      objact["_id"] !== props.me["userId"] )
+  ;
 
   function handleNewMessage(userId) {
     if (userId !== selected && unreadMessages[userId] === undefined) {

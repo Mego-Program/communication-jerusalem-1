@@ -7,33 +7,27 @@ import ChatHistory from "./ChatHistory.jsx";
 import Input from "./Input.jsx";
 import LiveChat from "./LiveChat.jsx";
 import NewMsg from "./NewMsg.jsx";
-import users from "./users.js";
 import groups from "./groups.js";
 import "typeface-poppins"; // not working for now
 import { useEffect, useRef } from "react";
-// import axios from "axios";
-// const me = { userId: 25, name: "Elazar" };
 import me from "./me.js";
-import theUsers from "./users.js";
-
-
-
-
+import { getAllUsers } from "./fetch-requests.jsx";
 
 const ChatView = () => {
-  const users1 = async () => {
-    const list = await theUsers()
-    return list
-  };
   const [selected, setSelected] = useState(null);
 
-  const [items, setItems] = useState(users1());
-  console.log(items);
+  const [items, setItems] = useState([]);
+
   const [allMsg, setAllMsg] = useState([]);
 
   console.log(allMsg);
 
   const [socket, setSocket] = useState(null);
+
+  const users = async () => {
+    const list = await getAllUsers();
+    setItems(list);
+  };
 
   function handleSetSelected(key) {
     setSelected(key);
@@ -61,6 +55,9 @@ const ChatView = () => {
     scrollToBottom();
   }, [allMsg, selected]);
 
+  useEffect(() => {
+    users();
+  }, []);
   return (
     <Box
       sx={{
@@ -90,7 +87,7 @@ const ChatView = () => {
             <MyTabs
               setSelected={handleSetSelected}
               setItems={handleSetItems}
-              users={users()}
+              users={items}
               groups={groups}
             />
             <UsersList
