@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import MyTabs from "./myTabs";
-import UsersList from "./UsersList";
+import MyTabs from "./myTabs.jsx";
+import UsersList from "./UsersList.jsx";
 import { Box } from "@mui/system";
 import Grid from "@mui/material/Grid";
 import ChatHistory from "./ChatHistory.jsx";
-import Input from "./Input";
-import LiveChat from "./LiveChat";
-import NewMsg from "./NewMsg";
-import users from "./users";
-import groups from "./groups";
+import Input from "./Input.jsx";
+import LiveChat from "./LiveChat.jsx";
+import NewMsg from "./NewMsg.jsx";
+import users from "./users.js";
+import groups from "./groups.js";
 import "typeface-poppins"; // not working for now
 import { useEffect, useRef } from "react";
 import me from "./me.js";
