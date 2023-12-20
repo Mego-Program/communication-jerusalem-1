@@ -12,7 +12,7 @@ import groups from "./groups.js";
 import "typeface-poppins"; // not working for now
 import { useEffect, useRef } from "react";
 // import axios from "axios";
-const me = { userId: 25, name: "Elazar" };
+// const me = { userId: 25, name: "Elazar" };
 import me from "./me.js";
 import theUsers from "./users.js";
 
