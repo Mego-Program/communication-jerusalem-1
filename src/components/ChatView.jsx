@@ -1,24 +1,34 @@
 import React, { useState } from "react";
-import MyTabs from "./myTabs";
-import UsersList from "./UsersList";
+import MyTabs from "./MyTabs.jsx";
+import UsersList from "./UsersList.jsx";
 import { Box } from "@mui/system";
 import Grid from "@mui/material/Grid";
-import ChatHistory from "./ChatHistory";
-import Input from "./Input";
-import LiveChat from "./LiveChat";
-import NewMsg from "./NewMsg";
-import users from "./users";
-import groups from "./groups";
+import ChatHistory from "./ChatHistory.jsx";
+import Input from "./Input.jsx";
+import LiveChat from "./LiveChat.jsx";
+import NewMsg from "./NewMsg.jsx";
+import users from "./users.js";
+import groups from "./groups.js";
 import "typeface-poppins"; // not working for now
 import { useEffect, useRef } from "react";
 // import axios from "axios";
 const me = { userId: 25, name: "Elazar" };
+import me from "./me.js";
+import theUsers from "./users.js";
+
+
+
+
 
 const ChatView = () => {
+  const users1 = async () => {
+    const list = await theUsers()
+    return list
+  };
   const [selected, setSelected] = useState(null);
 
-  const [items, setItems] = useState(users);
-
+  const [items, setItems] = useState(users1());
+  console.log(items);
   const [allMsg, setAllMsg] = useState([]);
 
   console.log(allMsg);
@@ -80,14 +90,14 @@ const ChatView = () => {
             <MyTabs
               setSelected={handleSetSelected}
               setItems={handleSetItems}
-              users={users}
+              users={users()}
               groups={groups}
             />
             <UsersList
               selected={selected}
               setSelected={handleSetSelected}
               items={items}
-              me={me}
+              me={me()}
             />
           </Box>
         </Grid>

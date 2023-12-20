@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
-// import me from './me'
+import me from "./me.js";
 
-const me = {userId:25,name:'Elazar'}
 
-const newSocket = io('http://localhost:3000');
+
+const newSocket = io('https://communication-1-server.onrender.com/');
 const NewMsg = ({ setAllMsg,setSocket }) => {
     
   function myUserId(){
 
-    newSocket.emit("userId",me.userId)
+    newSocket.emit("userId",me().userId)
+    console.log("userId sended")
 }
 
   useEffect(() => {
