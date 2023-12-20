@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@mui/system";
-import Message from "./Message";
+import Message from "./Message.jsx";
+import me from "./me.js";
 
-const me = { userId: 25, name: 'Elazar' };
 
 const ChatHistory = ({ selected }) => {
   const [dataBase, setDataBase] = useState(null);
@@ -10,7 +10,7 @@ const ChatHistory = ({ selected }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/findMessages?me=${me.userId}&selected=${selected}`);
+        const response = await fetch(`http://localhost:3000/findMessages?me=${me().userId}&selected=${selected}`);
         const data = await response.json();
         setDataBase(data);
       } catch (error) {
