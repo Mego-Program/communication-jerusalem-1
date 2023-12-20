@@ -2,10 +2,11 @@ import React, { useState, useRef } from "react";
 import { TextareaAutosize, Button, Box } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import Logo from "/Logo.png";
+import me from "./me.js";
 
-const me = { userId: 25, name: "Elazar" };
 
 const Input = ({ selected, socket, setAllMsg }) => {
+  console.log(me().userId)
   const [inputValue, setInputValue] = useState("");
   const textareaRef = useRef(null);
 
@@ -29,7 +30,7 @@ const Input = ({ selected, socket, setAllMsg }) => {
     }
 
     const message = {
-      from: me.userId,
+      from: me().userId,
       to: selected,
       text: inputValue,
       timestamp: getCurrentTime() + "  " + new Date().toLocaleDateString(),

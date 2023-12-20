@@ -3,7 +3,7 @@ import MyTabs from "./myTabs";
 import UsersList from "./UsersList";
 import { Box } from "@mui/system";
 import Grid from "@mui/material/Grid";
-import ChatHistory from "./ChatHistory";
+import ChatHistory from "./ChatHistory.jsx";
 import Input from "./Input";
 import LiveChat from "./LiveChat";
 import NewMsg from "./NewMsg";
@@ -11,14 +11,22 @@ import users from "./users";
 import groups from "./groups";
 import "typeface-poppins"; // not working for now
 import { useEffect, useRef } from "react";
+import me from "./me.js";
+import theUsers from "./users.js";
 
-const me = { userId: 25, name: "Elazar" };
+
+
+
 
 const ChatView = () => {
+  const users1 = async () => {
+    const list = await theUsers()
+    return list
+  };
   const [selected, setSelected] = useState(null);
 
-  const [items, setItems] = useState(users);
-
+  const [items, setItems] = useState(users1());
+  console.log(items);
   const [allMsg, setAllMsg] = useState([]);
 
   console.log(allMsg);
@@ -80,14 +88,14 @@ const ChatView = () => {
             <MyTabs
               setSelected={handleSetSelected}
               setItems={handleSetItems}
-              users={users}
+              users={users()}
               groups={groups}
             />
             <UsersList
               selected={selected}
               setSelected={handleSetSelected}
               items={items}
-              me={me}
+              me={me()}
             />
           </Box>
         </Grid>

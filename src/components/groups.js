@@ -1,8 +1,8 @@
 export default function groups(){
     return [
-    { name: "Administrators", userId: 100 },
-    { name: "My pro team", userId: 101 },
-    { name: "general", userId: 102 },
-    { name: "sorces", userId: 103 },
+    { username: "Administrators", _id: 100 },
+    { username: "My pro team", _id: 101 },
+    { username: "general", _id: 102 },
+    { username: "sorces", _id: 103 },
   ]}
   

@@ -12,6 +12,7 @@ export default function UsersList(props) {
 
   const selected = props.selected;
   const items = props.items;
+  console.log(items+"compo")
 
   const selectButton = (key) => {
     props.setSelected(key);
@@ -20,7 +21,7 @@ export default function UsersList(props) {
 
   const filteredItems = items.filter(
     (objact) =>
-      objact.userId !== props.me.userId &&
+      objact._id !== props.me.userId &&
       objact.name.toLowerCase().includes(filterText.toLowerCase())
   );
 
@@ -101,29 +102,29 @@ export default function UsersList(props) {
       >
         {filteredItems.map((objact) => (
           <Button
-            key={objact.userId}
+            key={objact._Id}
             onClick={() => {
-              selectButton(objact.userId);
-              handleNewMessage(objact.userId);
+              selectButton(objact._id);
+              handleNewMessage(objact._id);
             }}
             sx={{
               minWidth: "15%",
               color: "white",
-              background: objact.userId === selected ? "#121231" : "#21213E",
+              background: objact._id === selected ? "#121231" : "#21213E",
               border: "none",
               height: 50,
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
               margin: "10px",
-              boxShadow: objact.userId === selected ? "inset 0 0 1px 1px #21213E" : "none",
+              boxShadow: objact.username === selected ? "inset 0 0 1px 1px #21213E" : "none",
             }}
           >
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <Drawer />
-              {objact.name}
+              {objact.username}
             </Box>
-            {UnreadMessages(objact.userId)}
+            {UnreadMessages(objact._id)}
           </Button>
         ))}
       </ButtonGroup>
