@@ -30,6 +30,7 @@ const Input = ({ selected, socket, setAllMsg }) => {
     }
 
     const message = {
+      
       from: me().userId,
       to: selected,
       text: inputValue,
