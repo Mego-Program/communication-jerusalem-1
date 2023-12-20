@@ -1,24 +1,9 @@
-export default function users(){
-    return [
-    {name:'Elazar',userId:25},
-    { name: "Avi", userId: 1 },
-    { name: "dovi", userId: 2 },
-    { name: "moishy", userId: 3 },
-    { name: "david", userId: 4 },
-    { name: "josh", userId: 5 },
-    { name: "eithan", userId: 6 },
-    { name: "sander", userId: 20 },
-    { name: "boaz", userId: 7 },
-    { name: "Ariel", userId: 8 },
-    { name: "tzvi", userId: 9 },
-    { name: "yaniv", userId: 10 },
-    { name: "haim", userId: 11 },
-    { name: "osnat", userId: 12 },
-    { name: "meny", userId: 13 },
-    { name: "mendel", userId: 14 },
-    { name: "hardon", userId: 15 },
-    { name: "Av", userId: 16 },
-    { name: "dov", userId: 17 },
-    { name: "moish", userId: 18 },
-    { name: "dave", userId: 19 },
-  ]}
+import axios from "axios"
+
+const users = async ()=>{
+  const response = await axios.get("http://localhost:3000/getUsers")
+  console.log(response);
+  return response
+}
+
+export default users
