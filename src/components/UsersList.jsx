@@ -12,7 +12,7 @@ export default function UsersList(props) {
 
   const selected = props.selected;
   const items = props.items;
-  console.log(items+"compo")
+  
 
   const selectButton = (key) => {
     props.setSelected(key);
