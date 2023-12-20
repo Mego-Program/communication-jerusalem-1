@@ -34,6 +34,7 @@ const Input = ({ selected, socket, setAllMsg }) => {
       to: selected,
       text: inputValue,
       timestamp: getCurrentTime() + "  " + new Date().toLocaleDateString(),
+      typeDate: new Date()
     };
 
     if (inputValue.trim() !== "") {
