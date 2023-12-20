@@ -3,7 +3,7 @@ import MyTabs from "./myTabs.jsx";
 import UsersList from "./UsersList.jsx";
 import { Box } from "@mui/system";
 import Grid from "@mui/material/Grid";
-import ChatHistory from "./ChatHistory.jsx";
+import ChatHistory from "./hhatHistory.jsx";
 import Input from "./Input.jsx";
 import LiveChat from "./LiveChat.jsx";
 import NewMsg from "./NewMsg.jsx";
