@@ -22,8 +22,10 @@ import {
   PermMedia as PermMediaIcon,
   FileCopy as FileCopyIcon,
 } from "@mui/icons-material";
+import { getAllUsers } from "./fetch-requests.jsx";
 
 export default function Drawer() {
+
   const [state, setState] = React.useState({
     right: false,
   });
@@ -48,7 +50,7 @@ export default function Drawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List sx={{ color: "white", background: "#121231" }}>
-        <Avatar sx={{ margin: 5, width: 120, height: 120 }}></Avatar>
+        <Avatar alt="Avatar" src="" sx={{ margin: 5, width: 120, height: 120 }} ></Avatar>
         {[
           "User Name",
           "About",
@@ -107,7 +109,7 @@ export default function Drawer() {
             sx={{ marginRight: "10px" }}
             onClick={toggleDrawer(anchor, true)}
           >
-            {<Avatar />}
+            {<Avatar alt="Avatar" src=""/>}
           </Fab>
           <SwipeableDrawer
             anchor={anchor}
