@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
-import Message from "./MessageEE"; 
+import Message from "./Message"; 
 
 const LiveChat = ({messages, selected}) => {
     if(messages.length !== 0){

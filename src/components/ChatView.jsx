@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MyTabs from "./MyTabsEE.jsx";
+import MyTabs from "./MyTabs.jsx";
 import UsersList from "./UsersList.jsx";
 import { Box } from "@mui/system";
 import Grid from "@mui/material/Grid";
