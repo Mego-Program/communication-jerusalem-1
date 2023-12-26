@@ -95,6 +95,7 @@ const ChatView = () => {
               setSelected={handleSetSelected}
               items={items}
               me={me()}
+              socket={socket}
             />
           </Box>
         </Grid>
