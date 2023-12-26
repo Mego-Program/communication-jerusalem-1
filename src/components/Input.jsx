@@ -6,7 +6,7 @@ import me from "./me.js";
 
 
 const Input = ({ selected, socket, setAllMsg }) => {
-  console.log(me().userId)
+  console.log(me().name)
   const [inputValue, setInputValue] = useState("");
   const textareaRef = useRef(null);
 
@@ -31,7 +31,7 @@ const Input = ({ selected, socket, setAllMsg }) => {
     }
 
     const message = {
-      from: me().userId,
+      from: me().name,
       to: selected,
       text: inputValue,
       timestamp: getCurrentTime() + "  " + new Date().toLocaleDateString(),

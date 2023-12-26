@@ -14,7 +14,7 @@ const Message = (props) => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        alignItems: props.sender == me().userId ? "end" : "",
+        alignItems: props.sender == me().name ? "end" : "",
       }}
     >
       <Box
@@ -31,20 +31,20 @@ const Message = (props) => {
             color="textSecondary"
             gutterBottom
             sx={{
-              color: props.sender == me().userId ? "white" : "black",
-              backgroundColor: props.sender == me().userId ? "#0A0A1B" : "#F6C927",
+              color: props.sender == me().name ? "white" : "black",
+              backgroundColor: props.sender == me().name ? "#0A0A1B" : "#F6C927",
               borderTopRightRadius: "20px",
               borderTopLeftRadius: "20px",
               padding: "10px",
             }}
           >
-            {props.sender} - {props.time}
+            {props.sender === me().name ? me().name + " (You)" : props.sender} - {props.time}
           </Typography>
           <Typography
             variant="body1"
             sx={{
-              color: props.sender == me().userId ? "black" : "black",
-              backgroundColor: props.sender == me().userId ? "white" : "white",
+              color: props.sender == me().name ? "black" : "black",
+              backgroundColor: props.sender == me().name ? "white" : "white",
               borderBottomRightRadius: "20px",
               borderBottomLeftRadius: "20px",
               padding: "10px",
