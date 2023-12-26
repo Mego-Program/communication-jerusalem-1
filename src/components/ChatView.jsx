@@ -11,7 +11,7 @@ import NewMsg from "./NewMsg.jsx";
 import "typeface-poppins"; // not working for now
 import { useEffect, useRef } from "react";
 import me from "./me.js";
-import { getAllUsers } from "./fetch-requests.jsx";
+import { getAllUsers } from "./Fetch-requests.jsx";
 import groups from "./groups.js";
 
 const ChatView = () => {
@@ -99,6 +99,7 @@ const ChatView = () => {
               setSelected={handleSetSelected}
               items={items}
               me={me()}
+              socket={socket}
             />
           </Box>
         </Grid>
