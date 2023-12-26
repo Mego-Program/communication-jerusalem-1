@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@mui/system";
-import Message from "./Message.jsx";
+import Message from "./MessageEE.jsx";
 import me from "./me.js";
 
 
