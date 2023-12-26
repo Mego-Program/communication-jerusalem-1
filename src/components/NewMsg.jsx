@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
-import me from "./Me.js";
+import me from "./me.js";
 
 
 
