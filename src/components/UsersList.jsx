@@ -12,11 +12,39 @@ export default function UsersList(props) {
 
   const selected = props.selected;
   const items = props.items;
+  const socket = props.socket;
+  const [activity, setActivity] = useState("");
+  const [activityTimer, setActivityTimer] = useState(null);
+
+  useEffect(() => {
+    // Cleanup timer on component unmount
+    return () => clearTimeout(activityTimer);
+  }, [activityTimer]);
   
   const selectButton = (key) => {
     props.setSelected(key);
     setUnreadMessages({ ...unreadMessages, [key]: 0 });
   };
+
+  useEffect(() => {
+    // Listen for the "activity" socket event
+    socket.on("activity", (id) => {
+      setActivity(id);
+
+      // Clear after 3 seconds
+      clearTimeout(activityTimer);
+      setActivityTimer(
+        setTimeout(() => {
+          setActivity("");
+        }, 3000)
+      );
+    });
+
+    // Cleanup socket listener on component unmount
+    return () => {
+      socket.off("activity");
+    };
+  }, [activityTimer, socket]);
 
   const filteredItems = items.filter(
     (objact) =>
@@ -121,6 +149,9 @@ export default function UsersList(props) {
             <Box sx={{ display: "flex", alignItems: "center", fontSize: objact.username.length > 12 ? "8px" : objact.username.length > 8 ? "12px" : "medium" }}>
               <Drawer />
               {objact.username}
+              {objact._Id === activity && (
+                <span style={{ marginLeft: 8, fontSize: 12 }}>typing...</span>
+                )}
             </Box>
             {UnreadMessages(objact._id)}
           </Button>

@@ -14,6 +14,7 @@ export default defineConfig({
       },
       shared: ["react", "react-dom"],
     }),
+    
   ],
   build: {
     modulePreload: false,
