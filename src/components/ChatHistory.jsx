@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@mui/system";
 import Message from "./Message.jsx";
-import me from "./me.js";
+import me from "./Me.js";
 
 
 const ChatHistory = ({ selected }) => {

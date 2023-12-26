@@ -22,7 +22,7 @@ import {
   PermMedia as PermMediaIcon,
   FileCopy as FileCopyIcon,
 } from "@mui/icons-material";
-import { getAllUsers } from "./fetch-requests.jsx";
+import { getAllUsers } from "./Fetch-Requests.jsx";
 
 export default function Drawer() {
 

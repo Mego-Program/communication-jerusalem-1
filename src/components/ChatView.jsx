@@ -10,9 +10,9 @@ import NewMsg from "./NewMsg.jsx";
 
 import "typeface-poppins"; // not working for now
 import { useEffect, useRef } from "react";
-import me from "./me.js";
-import { getAllUsers } from "./fetch-requests.jsx";
-import groups from "./groups.js";
+import me from "./Me.js";
+import { getAllUsers } from "./Fetch-Requests.jsx";
+import groups from "./Groups.js";
 
 const ChatView = () => {
   const [selected, setSelected] = useState(null);

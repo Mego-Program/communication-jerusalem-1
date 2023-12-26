@@ -3,7 +3,7 @@ import React from "react";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
-import me from "./me.js";
+import me from "./Me.js";
 
 
 

@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { TextareaAutosize, Button, Box } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import Logo from "/Logo.png";
-import me from "./me.js";
+import me from "./Me.js";
 
 
 const Input = ({ selected, socket, setAllMsg }) => {
