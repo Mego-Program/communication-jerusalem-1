@@ -1,39 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import io from 'socket.io-client';
-import me from "./me.js";
+// import React, { useState, useEffect } from 'react';
+// import io from 'socket.io-client';
+// import me from "./me.js";
 
 
 
-const newSocket = io('https://communication-1-server.onrender.com/');
-const NewMsg = ({ setAllMsg,setSocket }) => {
+// const newSocket = io('https://communication-1-server.onrender.com/');
+// const NewMsg = ({ setAllMsg,setSocket }) => {
     
-  function myUserId(){
+//   function myUserId(){
 
-    newSocket.emit("userId",me().userId)
-    console.log("userId sended")
-}
+//     newSocket.emit("userId",me().userId)
+//     console.log("userId sended")
+// }
 
-  useEffect(() => {
+//   useEffect(() => {
    
     
 
 
-    setSocket(newSocket);
-    myUserId()
+//     setSocket(newSocket);
+//     myUserId()
 
    
   
 
-    newSocket.on('message', (data) => {
-      console.log('came')
-      setAllMsg(data);
-    });
+//     newSocket.on('message', (data) => {
+//       console.log('came')
+//       setAllMsg(data);
+//     });
 
-    return () => {
-      newSocket.disconnect();
-    };
-  }, []);
+//     return () => {
+//       newSocket.disconnect();
+//     };
+//   }, []);
 
-};
+// };
 
-export default NewMsg;
+// export default NewMsg;
