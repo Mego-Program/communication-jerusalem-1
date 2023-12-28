@@ -6,13 +6,15 @@ import Grid from "@mui/material/Grid";
 import ChatHistory from "./ChatHistory.jsx";
 import Input from "./Input.jsx";
 import LiveChat from "./LiveChat.jsx";
-import NewMsg from "./NewMsg.jsx";
-
+// import NewMsg from "./NewMsg.jsx";
 import "typeface-poppins"; // not working for now
 import { useEffect, useRef } from "react";
 import me from "./me.js";
 import { getAllUsers } from "./Fetch-requests.jsx";
 import groups from "./groups.js";
+import io from "socket.io-client";
+
+const socket = io("https://communication-1-server.onrender.com/");
 
 const ChatView = () => {
   const [selected, setSelected] = useState(null);
@@ -25,7 +27,7 @@ const ChatView = () => {
 
   console.log(allMsg);
 
-  const [socket, setSocket] = useState(null);
+  // const [socket, setSocket] = useState(newSocket);
 
   function handleSetSelected(key) {
     setSelected(key);
@@ -39,9 +41,9 @@ const ChatView = () => {
     setAllMsg((prevArray) => [...prevArray, newMsg]);
   }
 
-  function handleSetSocket(skt) {
-    setSocket(skt);
-  }
+  // function handleSetSocket(skt) {
+  //   setSocket(skt);
+  // }
 
   const messagesEndRef = useRef(null);
 
@@ -58,6 +60,20 @@ const ChatView = () => {
     setListUsers(list);
     setItems(list)
   };
+
+
+  useEffect(() => {
+
+    socket.emit("userId", me().userId);
+
+    socket.on("message", (data) => {
+      console.log("came");
+      setAllMsg(data);
+    });
+    return () => {
+      socket.disconnect();
+    };
+  });
 
   useEffect(() => {
     users();
@@ -115,7 +131,7 @@ const ChatView = () => {
               socket={socket}
               setAllMsg={handleSetAllMsg}
             />
-            <NewMsg setAllMsg={handleSetAllMsg} setSocket={handleSetSocket} />
+            {/* <NewMsg setAllMsg={handleSetAllMsg} setSocket={handleSetSocket} /> */}
           </Box>
         </Grid>
       </Grid>
