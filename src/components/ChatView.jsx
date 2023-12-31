@@ -15,9 +15,9 @@ import groups from "./groups.js";
 import io from "socket.io-client";
 
 const socket = io("https://communication-1-server.onrender.com/");
-const isGetuserID = React.useRef(false)
 const ChatView = () => {
   const [selected, setSelected] = useState(null);
+  const isGetuserID = React.useRef(null)
 
   const [allMsg, setAllMsg] = useState([]);
 
