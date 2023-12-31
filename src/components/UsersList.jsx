@@ -144,7 +144,7 @@ export default function UsersList(props) {
               justifyContent: "space-between",
               alignItems: "center",
               margin: "10px",
-              boxShadow: objact.username === selected ? "inset 0 0 1px 1px #21213E" : "none",
+              boxShadow: objact._id === selected ? "inset 0 0 1px 1px #21213E" : "none",
             }}
           >
             <Box sx={{ display: "flex", alignItems: "center", fontSize: objact.username.length > 12 ? "8px" : objact.username.length > 8 ? "12px" : "medium" }}>
