@@ -129,15 +129,15 @@ export default function UsersList(props) {
       >
         {filteredItems.map((objact, i) => (
           <Button
-            key={objact.username}
+            key={objact._Id}
             onClick={() => {
-              selectButton(objact.username);
-              handleNewMessage(objact.username);
+              selectButton(objact._id);
+              handleNewMessage(objact._id);
             }}
             sx={{
               minWidth: "15%",
               color: "white",
-              background: objact.username === selected ? "#121231" : "#21213E",
+              background: objact._id === selected ? "#121231" : "#21213E",
               border: "none",
               height: 50,
               display: "flex",
