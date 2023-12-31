@@ -129,7 +129,7 @@ export default function UsersList(props) {
       >
         {filteredItems.map((objact, i) => (
           <Button
-            key={objact._Id}
+            key={objact._id}
             onClick={() => {
               selectButton(objact._id);
               handleNewMessage(objact._id);
@@ -150,7 +150,7 @@ export default function UsersList(props) {
             <Box sx={{ display: "flex", alignItems: "center", fontSize: objact.username.length > 12 ? "8px" : objact.username.length > 8 ? "12px" : "medium" }}>
               <Drawer userData={props.items[i]}  />
               {objact.username}
-              {objact._Id === activity && (
+              {objact._id === activity && (
                 <span style={{ marginLeft: 8, fontSize: 12 }}>typing...</span>
                 )}
             </Box>
