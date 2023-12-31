@@ -47,9 +47,10 @@ export default function UsersList(props) {
   }, [activityTimer, socket]);
 
   const filteredItems = items.filter(
-    (objact) =>
-      objact["_id"] !== props.me["userId"] )
-  ;
+    (object) =>
+      object.username.toLowerCase().includes(filterText.toLowerCase()) &&
+      object.username !== props.me.userId
+  );  
 
   function handleNewMessage(userId) {
     if (userId !== selected && unreadMessages[userId] === undefined) {
@@ -126,7 +127,7 @@ export default function UsersList(props) {
           },
         }}
       >
-        {filteredItems.map((objact) => (
+        {filteredItems.map((objact, i) => (
           <Button
             key={objact._Id}
             onClick={() => {
@@ -146,8 +147,8 @@ export default function UsersList(props) {
               boxShadow: objact.username === selected ? "inset 0 0 1px 1px #21213E" : "none",
             }}
           >
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Drawer />
+            <Box sx={{ display: "flex", alignItems: "center", fontSize: objact.username.length > 12 ? "8px" : objact.username.length > 8 ? "12px" : "medium" }}>
+              <Drawer userData={props.items[i]}  />
               {objact.username}
               {objact._Id === activity && (
                 <span style={{ marginLeft: 8, fontSize: 12 }}>typing...</span>
