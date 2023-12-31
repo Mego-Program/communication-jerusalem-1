@@ -15,7 +15,7 @@ import groups from "./groups.js";
 import io from "socket.io-client";
 
 const socket = io("https://communication-1-server.onrender.com/");
-
+const isGetuserID = React.useRef(false)
 const ChatView = () => {
   const [selected, setSelected] = useState(null);
 
@@ -51,6 +51,9 @@ const ChatView = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+
+
+
   useEffect(() => {
     scrollToBottom();
   }, [allMsg, selected]);
@@ -63,8 +66,12 @@ const ChatView = () => {
 
 
   useEffect(() => {
-
+    if (isGetuserID.current) return;
     socket.emit("userId", me().userId);
+    isGetuserID.current = true
+  },[]);
+
+  useEffect(() => {
 
     socket.on("message", (data) => {
       console.log("came");
