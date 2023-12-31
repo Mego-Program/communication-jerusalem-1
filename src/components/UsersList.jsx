@@ -48,7 +48,7 @@ export default function UsersList(props) {
 
   const filteredItems = items.filter(
     (objact) =>
-      objact["username"] !== props.me["userId"] )
+      objact["_id"] !== props.me["userId"] )
   ;
 
   function handleNewMessage(userId) {
@@ -128,15 +128,15 @@ export default function UsersList(props) {
       >
         {filteredItems.map((objact) => (
           <Button
-            key={objact.username}
+            key={objact._Id}
             onClick={() => {
-              selectButton(objact.username);
-              handleNewMessage(objact.username);
+              selectButton(objact._id);
+              handleNewMessage(objact._id);
             }}
             sx={{
               minWidth: "15%",
               color: "white",
-              background: objact.username === selected ? "#121231" : "#21213E",
+              background: objact._id === selected ? "#121231" : "#21213E",
               border: "none",
               height: 50,
               display: "flex",
@@ -146,7 +146,7 @@ export default function UsersList(props) {
               boxShadow: objact.username === selected ? "inset 0 0 1px 1px #21213E" : "none",
             }}
           >
-            <Box sx={{ display: "flex", alignItems: "center", fontSize: objact.username.length > 12 ? "8px" : objact.username.length > 8 ? "12px" : "medium" }}>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
               <Drawer />
               {objact.username}
               {objact._Id === activity && (
