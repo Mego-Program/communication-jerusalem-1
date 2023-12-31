@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   SwipeableDrawer,
   Fab,
-  Button,
   List,
   Divider,
   ListItem,
@@ -22,9 +21,8 @@ import {
   PermMedia as PermMediaIcon,
   FileCopy as FileCopyIcon,
 } from "@mui/icons-material";
-import { getAllUsers } from "./Fetch-requests.jsx";
 
-export default function Drawer() {
+export default function Drawer({userData}) {
 
   const [state, setState] = React.useState({
     right: false,
@@ -50,9 +48,9 @@ export default function Drawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List sx={{ color: "white", background: "#121231" }}>
-        <Avatar alt="Avatar" src="" sx={{ margin: 5, width: 120, height: 120 }} ></Avatar>
+        <Avatar alt="Avatar" src={userData ?.image} sx={{ margin: 5, width: 120, height: 120 }}></Avatar>
         {[
-          "User Name",
+          userData.username,
           "About",
           "Mail@gmail.com",
           "+972-5223-55658",
@@ -100,6 +98,7 @@ export default function Drawer() {
     </Box>
   );
 
+
   return (
     <div>
       {["right"].map((anchor) => (
@@ -109,7 +108,7 @@ export default function Drawer() {
             sx={{ marginRight: "10px" }}
             onClick={toggleDrawer(anchor, true)}
           >
-            {<Avatar alt="Avatar" src=""/>}
+            <Avatar alt="Avatar" src={userData ?.image}/>
           </Fab>
           <SwipeableDrawer
             anchor={anchor}
