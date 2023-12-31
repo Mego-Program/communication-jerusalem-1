@@ -5,6 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Drawer from "./Drawer";
 import { object } from "prop-types";
 import { Key } from "@mui/icons-material";
+import me from "./me";
 
 export default function UsersList(props) {
   const [filterText, setFilterText] = useState("");
@@ -149,7 +150,7 @@ export default function UsersList(props) {
           >
             <Box sx={{ display: "flex", alignItems: "center", fontSize: objact.username.length > 12 ? "8px" : objact.username.length > 8 ? "12px" : "medium" }}>
               <Drawer userData={props.items[i]}  />
-              {objact.username}
+              {objact.username !== me().name ? objact.username : objact.username+" (You)"}
               {objact._id === activity && (
                 <span style={{ marginLeft: 8, fontSize: 12 }}>typing...</span>
                 )}
