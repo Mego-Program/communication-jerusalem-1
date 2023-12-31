@@ -10,7 +10,7 @@ const ChatHistory = ({ selected }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/findMessages?me=${me().userId}&selected=${selected}`);
+        const response = await fetch(`https://communication-1-server.onrender.com/findMessages?me=${me().userId}&selected=${selected}`);
         const data = await response.json();
         setDataBase(data);
       } catch (error) {
