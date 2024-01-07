@@ -19,7 +19,7 @@ const ChatView = () => {
   const [selected, setSelected] = useState(null);
   const isGetuserID = React.useRef(null)
 
-  const [allMsg, setAllMsg] = useState([]);
+  const [allMsg, setAllMesg] = useState([]);
 
   const [listUsers, setListUsers] = useState([]);
 
@@ -27,7 +27,9 @@ const ChatView = () => {
 
   console.log(allMsg);
 
-  // const [socket, setSocket] = useState(newSocket);
+function setAllMsg(msg){
+  setAllMesg([...allMsg,msg])
+}
 
   function handleSetSelected(key) {
     setSelected(key);
@@ -66,9 +68,7 @@ const ChatView = () => {
 
 
   useEffect(() => {
-    if (isGetuserID.current) return;
     socket.emit("userId", me().userId);
-    isGetuserID.current = true
   },[]);
 
   useEffect(() => {
