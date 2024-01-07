@@ -43,7 +43,7 @@ const Input = ({ selected, socket, setAllMsg }) => {
     }
 
     if (socket && inputValue.trim() !== "") {
-      socket.emit("privetMessage", message);
+      socket.emit("message", message);
     }
 
     setInputValue("");

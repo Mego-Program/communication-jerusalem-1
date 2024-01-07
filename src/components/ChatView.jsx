@@ -78,7 +78,7 @@ const ChatView = () => {
       setAllMsg(data);
     });
     return () => {
-      socket.disconnect();
+      socket.off("message");
     };
   });
 
