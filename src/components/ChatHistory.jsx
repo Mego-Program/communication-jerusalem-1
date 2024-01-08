@@ -5,12 +5,12 @@ import me from "./me.js";
 
 
 const ChatHistory = ({ selected }) => {
-  const [dataBase, setDataBase] = useState(null);
+  const [dataBase, setDataBase] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://communication-1-server.onrender.com/findMessages?me=${me().userId}&selected=${selected}`);
+        const response = await fetch(`https://communication-1-server.onrender.com/findMessages?me=${me().name}&selected=${selected}`);
         const data = await response.json();
         setDataBase(data);
       } catch (error) {
