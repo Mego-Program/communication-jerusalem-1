@@ -32,14 +32,13 @@ const ChatHistory = ({ selected }) => {
       ></Box>
     );
   }
-
   return (
     <Box>
       {dataBase.map((object, index) => (
         <Message
-          sender={object.from}
-          message={object.text}
-          time={object.timestamp}
+          sender={object.senderID}
+          message={object.content}
+          time={object.sendDate}
           key={index}
         />
       ))}
