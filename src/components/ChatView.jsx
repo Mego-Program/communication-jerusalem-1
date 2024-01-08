@@ -61,7 +61,8 @@ const ChatView = () => {
 
 
   useEffect(() => {
-    socket.emit("userId", me().userId);
+    socket.emit("userId", me().name);
+    console.log('userid', me().name)
   },[]);
 
   useEffect(() => {
@@ -70,9 +71,6 @@ const ChatView = () => {
       console.log("came");
       handleSetAllMsg(data);
     });
-    // return () => {
-    //   socket.off("message");
-    // };
   },[]);
 
   useEffect(() => {
@@ -131,7 +129,7 @@ const ChatView = () => {
               socket={socket}
               setAllMsg={handleSetAllMsg}
             />
-            {/* <NewMsg setAllMsg={handleSetAllMsg} setSocket={handleSetSocket} /> */}
+            
           </Box>
         </Grid>
       </Grid>

@@ -11,7 +11,7 @@ const Input = ({ selected, socket, setAllMsg }) => {
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
-    socket.emit("activity", selected)
+    // socket.emit("activity", selected)
   };
   function enter(event) {
     if (event.key === "Enter") {
@@ -42,6 +42,7 @@ const Input = ({ selected, socket, setAllMsg }) => {
     }
 
     if (socket && inputValue.trim() !== "") {
+      
       socket.emit("message", message);
     }
 
