@@ -6,7 +6,6 @@ import me from "./me.js";
 
 
 const Input = ({ selected, socket, setAllMsg }) => {
-  console.log(me().name)
   const [inputValue, setInputValue] = useState("");
   const textareaRef = useRef(null);
 

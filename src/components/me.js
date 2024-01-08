@@ -3,11 +3,9 @@ export default function me() {
     // let key = localStorage.key(2);
     const userString = localStorage.getItem("user");
     const user = JSON.parse(userString);
-    console.log(user);
-    console.log(user["id"], user["username"]);
     return { userId: user["id"], name: user["username"], image: ["image"] };
   } catch (error) {
-    console.log("11vdfzx11bdf1", "Fake User");
+
     return {
       userId: "11vdfzx11bdf1",
       name: "Fake User",

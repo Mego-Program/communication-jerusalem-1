@@ -17,18 +17,15 @@ import io from "socket.io-client";
 const socket = io("https://communication-1-server.onrender.com/");
 const ChatView = () => {
   const [selected, setSelected] = useState(null);
-  const isGetuserID = React.useRef(null)
 
   const [allMsg, setAllMsg] = useState([]);
-  console.log(allMsg,'all messages')
 
   const [listUsers, setListUsers] = useState([]);
 
   const [items, setItems] = useState([]);
 
-  console.log(allMsg);
 
-  // const [socket, setSocket] = useState(newSocket);
+
 
   function handleSetSelected(key) {
     setSelected(key);
@@ -42,9 +39,6 @@ const ChatView = () => {
     setAllMsg((prevArray) => [...prevArray, newMsg]);
   }
 
-  // function handleSetSocket(skt) {
-  //   setSocket(skt);
-  // }
 
   const messagesEndRef = useRef(null);
 
@@ -67,21 +61,19 @@ const ChatView = () => {
 
 
   useEffect(() => {
-    if (isGetuserID.current) return;
     socket.emit("userId", me().userId);
-    isGetuserID.current = true
   },[]);
 
   useEffect(() => {
 
     socket.on("message", (data) => {
       console.log("came");
-      setAllMsg(data);
+      handleSetAllMsg(data);
     });
-    return () => {
-      socket.off("message");
-    };
-  });
+    // return () => {
+    //   socket.off("message");
+    // };
+  },[]);
 
   useEffect(() => {
     users();
