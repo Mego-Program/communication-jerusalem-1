@@ -6,13 +6,15 @@ import me from "./me.js";
 
 const ChatHistory = ({ selected }) => {
   const [dataBase, setDataBase] = useState([]);
-
+  console.log('database',dataBase)
   useEffect(() => {
     const fetchData = async () => {
       try {
+        
         const response = await fetch(`https://communication-1-server.onrender.com/findMessages?me=${me().name}&selected=${selected}`);
         const data = await response.json();
         setDataBase(data);
+       
       } catch (error) {
         console.error('Error fetching data:', error);
       }
