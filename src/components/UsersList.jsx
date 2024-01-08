@@ -50,16 +50,16 @@ export default function UsersList(props) {
   const filteredItems = items.filter(
     (object) =>
       object.username.toLowerCase().includes(filterText.toLowerCase()) &&
-      object.username !== props.me.userId
+      object.username !== props.me.username
   );  
 
-  function handleNewMessage(userId) {
-    if (userId !== selected && unreadMessages[userId] === undefined) {
+  function handleNewMessage(username) {
+    if (username !== selected && unreadMessages[username] === undefined) {
       setUnreadMessages((prevUnreadMessages) => ({
         ...prevUnreadMessages,
-        [userId]: 1,
+        [username]: 1,
       }));
-    } else if (userId !== selected && unreadMessages[userId] !== undefined) {
+    } else if (username !== selected && unreadMessages[username] !== undefined) {
       // Check if the user is not selected and there's an unread count
       // You might add here your logic to detect new messages
       // For now, I'll simulate a random condition that marks a message as new
@@ -68,14 +68,14 @@ export default function UsersList(props) {
       if (isNewMessage) {
         setUnreadMessages((prevUnreadMessages) => ({
           ...prevUnreadMessages,
-          [userId]: prevUnreadMessages[userId] + 1,
+          [username]: prevUnreadMessages[username] + 1,
         }));
       }
     }
   }
 
-  function UnreadMessages(userId) {
-    const unreadCount = unreadMessages[userId] || 0;
+  function UnreadMessages(username) {
+    const unreadCount = unreadMessages[username] || 0;
     return unreadCount > 0 ? (
       <Badge badgeContent={unreadCount} color="primary" />
     ) : null;
@@ -130,32 +130,32 @@ export default function UsersList(props) {
       >
         {filteredItems.map((objact, i) => (
           <Button
-            key={objact._id}
+            key={object.username}
             onClick={() => {
-              selectButton(objact._id);
-              handleNewMessage(objact._id);
+              selectButton(object.username);
+              handleNewMessage(object.username);
             }}
             sx={{
               minWidth: "15%",
               color: "white",
-              background: objact._id === selected ? "#121231" : "#21213E",
+              background: object.username === selected ? "#121231" : "#21213E",
               border: "none",
               height: 50,
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
               margin: "10px",
-              boxShadow: objact._id === selected ? "inset 0 0 1px 1px #21213E" : "none",
+              boxShadow: object.username === selected ? "inset 0 0 1px 1px #21213E" : "none",
             }}
           >
             <Box sx={{ display: "flex", alignItems: "center", fontSize: objact.username.length > 12 ? "8px" : objact.username.length > 8 ? "12px" : "medium" }}>
               <Drawer userData={props.items[i]}  />
               {objact.username !== me().name ? objact.username : objact.username+" (You)"}
-              {objact._id === activity && (
+              {object.username === activity && (
                 <span style={{ marginLeft: 8, fontSize: 12 }}>typing...</span>
                 )}
             </Box>
-            {UnreadMessages(objact._id)}
+            {UnreadMessages(object.username)}
           </Button>
         ))}
       </ButtonGroup>
