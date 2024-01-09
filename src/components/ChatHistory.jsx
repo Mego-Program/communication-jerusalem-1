@@ -4,16 +4,16 @@ import Message from "./Message.jsx";
 import me from "./me.js";
 
 
-const ChatHistory = ({ selected }) => {
+const ChatHistory = ({ selected,scrollToBottom }) => {
   const [dataBase, setDataBase] = useState([]);
-  console.log('database',dataBase)
   useEffect(() => {
     const fetchData = async () => {
       try {
         
         const response = await fetch(`https://communication-1-server.onrender.com/findMessages?me=${me().name}&selected=${selected}`);
         const data = await response.json();
-        setDataBase(data);
+        const revdata = await data.reverse()
+        setDataBase(revdata);
        
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -22,6 +22,10 @@ const ChatHistory = ({ selected }) => {
 
     fetchData();
   }, [selected]); // אנו מוסיפים את selected לרשימת התלות, כדי לשלוח את הבקשה מחדש כאשר selected משתנה.
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [dataBase]);
 
   if (!dataBase) {
     return (

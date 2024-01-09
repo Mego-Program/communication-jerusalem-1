@@ -62,7 +62,6 @@ const ChatView = () => {
 
   useEffect(() => {
     socket.emit("userId", me().name);
-    console.log('userid', me().name)
   },[]);
 
   useEffect(() => {
@@ -118,8 +117,8 @@ const ChatView = () => {
           </Box>
         </Grid>
         <Grid item xs={7} sm={8} md={9} lg={10}>
-          <Box>
-            <ChatHistory selected={selected} />
+          <Box >
+            <ChatHistory selected={selected} scrollToBottom={scrollToBottom} />
 
             <LiveChat messages={allMsg} selected={selected} />
           </Box>
